@@ -4,7 +4,7 @@
 .register-container {
   width: 360px;
   background: #f1f1f1;
-  height: 580px;
+  height: 599px;
   padding: 80px 40px;
   border-radius: 10px;
   position: absolute;
@@ -62,7 +62,7 @@
   position: absolute;
   width: 0%;
   height: 2px;
-  background: linear-gradient(120deg,#3498db,#8e44ad);
+  background: linear-gradient(120deg,#7c7c7c,#363636);
   transition: 0.5s;
 }
 
@@ -90,4 +90,22 @@
   margin-top: 60px;
   text-align: center;
   font-size: 14px;
+}
+
+.back-link{
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  color: #41414d;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.back-link svg{
+  margin-right: 8px;
+}
+
+.back-link:hover{
+  opacity: 0.8;
 }

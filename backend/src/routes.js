@@ -2,9 +2,17 @@ const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
 
 const UsersControllers = require('./controllers/UsersControllers');
-
+const LoginControllers = require('./controllers/LoginControllers');
 
 const routes = express.Router();
+
+//login
+routes.post('/login',celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+  })
+}), LoginControllers.create);
 
 //criar usuario
 routes.post('/users', celebrate({
