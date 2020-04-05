@@ -25,7 +25,7 @@ export default function Login(){
       localStorage.setItem('email',response.data.password);
 
 
-      history.push('/homepage');
+      history.push('/home');
 
     }catch(err){
       alert('Falha no login');
