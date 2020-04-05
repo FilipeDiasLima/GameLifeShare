@@ -1,8 +1,14 @@
 const express = require('express');
-const { celebrate, Segments, Joi } = require('celebrate');
 
 const UsersControllers = require('./controllers/UsersControllers');
+
+const registerValidation = require('./validators/register');
+const emailAlreadyExists = require('./utils/emailAlreadyExists');
+const hashPassword = require('./utils/hashPassword');
+const checkPassword = require('./utils/checkPassword');
+
 const LoginControllers = require('./controllers/LoginControllers');
+
 
 const routes = express.Router();
 
@@ -15,6 +21,33 @@ routes.post('/login',celebrate({
 }), LoginControllers.create);
 
 //criar usuario
+
+routes.post('/users', async (req, res) => {
+    const {error} = registerValidation(req.body);
+
+    if (error) return res.status(400).send(error.details[0].message);
+
+    const emailExist = await emailAlreadyExists(req.body);
+
+    if (emailExist) return res.status(400).send('Email already exists');
+
+    req.body.password = await hashPassword(req.body.password);
+
+    UsersControllers.create(req, res);
+});
+
+routes.post('/login', async (req, res) =>{
+  const dataUser = await emailAlreadyExists(req.body);
+
+  if (!dataUser) return res.status(400).send('Email is wrong');
+
+  const validPass = await checkPassword(req.body.password, dataUser.password);
+
+  if(!validPass) return res.status(400).send('password is wrong');
+
+  res.send('logged in!');
+});
+
 routes.post('/users', celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
@@ -23,6 +56,7 @@ routes.post('/users', celebrate({
     password: Joi.string().required(),
   })
 }), UsersControllers.create);
+
 
 //listar todos os usuarios
 routes.get('/users', UsersControllers.index);
