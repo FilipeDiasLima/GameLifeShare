@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-.login-container {
+.register-container {
   width: 360px;
   background: #f1f1f1;
-  height: 450px;
+  height: 599px;
   padding: 80px 40px;
   border-radius: 10px;
   position: absolute;
@@ -13,7 +13,7 @@
   transform: translate(-50%,-50%);
 }
 
-.login-container h1{
+.register-container h1{
   text-align: Center;
   margin-bottom:  60px;
   color: #5c5c5c;
@@ -21,7 +21,7 @@
   
 }
 
-.login-container img{
+.register-container img{
   margin-top: -50px;
   margin-left: 125px;
   width: 110px;
@@ -44,7 +44,6 @@
   background: none;
   padding: 0 5px;
   height: 40px;
-  
 }
 
 .textb span::before{
@@ -63,11 +62,11 @@
   position: absolute;
   width: 0%;
   height: 2px;
-  background: linear-gradient(120deg,#3498db,#8e44ad);
+  background: linear-gradient(120deg,#7c7c7c,#363636);
   transition: 0.5s;
 }
 
-.logbutton{
+.button{
   display: block;
   width: 100%;
   height: 50px;
@@ -81,16 +80,32 @@
   font-family: 'Righteous', cursive;
 }
 
-.logbutton:hover{
+.button:hover{
   background-position: right;
   
 }
 
 .bottom-text {
+  margin-bottom: 30px;
   margin-top: 60px;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
 }
 
+.back-link{
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  color: #41414d;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.back-link svg{
+  margin-right: 8px;
+}
 
-
+.back-link:hover{
+  opacity: 0.8;
+}

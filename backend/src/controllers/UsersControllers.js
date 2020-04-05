@@ -3,20 +3,15 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-  async index (request, response){
-    const users = await connection('users').select('*');
-
-    return response.json(users)
-  },
-
   async create (request, response) {
-    const {name, email, password} = request.body;
+    const {name, username, email, password} = request.body;
   
     const id = generateUniqueId();
     
     await connection('users').insert({
       id,
       name,
+      username,
       email,
       password,
     });
@@ -24,14 +19,34 @@ module.exports = {
     return response.json({ id });
   },
 
+  async index (request, response){
+    const users = await connection('users')
+      .select('*');
+
+    return response.json(users)
+  },
+
   async indexInd (request, response){
-    const {id} = request.params;
+    const { id } = request.params;
     const user = await connection('users')
       .where('id',id)
       .select('*')
-      .first()    
-    //const user = await connection.findById(request.params.id);
+      .first();
 
-    return response.json(user);
+    return response.json(user)
+  },
+
+  async delete(request, response){
+    const { id } = request.params;
+    const user = await connection('users')
+      .where('id',id)
+      .select('*')
+      .first()
+
+    await connection('users')
+      .where('id',id)
+      .delete();
+
+    return response.status(204).send();
   }
 }
