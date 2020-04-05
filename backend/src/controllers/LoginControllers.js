@@ -1,24 +1,16 @@
-const connection = require('../database/connection');
+const emailAlreadyExists = require('../utils/emailAlreadyExists');
+const checkPassword = require('../utils/checkPassword');
 
 module.exports = {
   async create(request, response){
-    const {username, password} = request.body;
+    const dataUser = await emailAlreadyExists(request.body);
 
-    const user_username = await connection('users')
-      .where('username',username)
-      .select('username')
-      .first();
+    if (!dataUser) return response.status(400).send('Email is wrong');
 
-    const user_password = await connection('users')
-      .where('password',password)
-      .select('password')
-      .first();
+    const validPass = await checkPassword(request.body.password, dataUser.password);
 
-    if(!user_username || !user_password){
-      return response.status(400).json({error:'Username or Password incorret'});
+    if(!validPass) return response.status(400).send('password is wrong');
 
-    }
-
-    return response.json({user_username, user_password});
+    return response.json(dataUser);
   }
 }
