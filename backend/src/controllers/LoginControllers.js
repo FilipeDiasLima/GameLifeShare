@@ -1,11 +1,11 @@
-const emailAlreadyExists = require('../utils/emailAlreadyExists');
+const userAlreadyExists = require('../utils/userAlreadyExists');
 const checkPassword = require('../utils/checkPassword');
 
 module.exports = {
   async create(request, response){
-    const dataUser = await emailAlreadyExists(request.body);
+    const dataUser = await userAlreadyExists(request.body);
 
-    if (!dataUser) return response.status(400).send('Email is wrong');
+    if (!dataUser) return response.status(400).send('Username is wrong');
 
     const validPass = await checkPassword(request.body.password, dataUser.password);
 
