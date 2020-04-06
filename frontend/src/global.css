@@ -13,3 +13,72 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* navigation bar*/
+.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: linear-gradient(100deg, #17718c, #545260, #4f4957);
+  position: -webkit-sticky;
+  position: sticky;
+  top:0;
+}
+
+.navBar li{
+  float: left;
+  height: 56px;
+}
+
+.navBar li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.navBar li a:hover {
+  opacity: 0.4;
+}
+
+.navBar .profileImg a:hover {
+  opacity: 0.7;
+}
+
+.navBar .profileImg a img{
+  margin-top: -11px;
+  margin-left: 125px;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+}
+
+.navBar .logoName a{
+  font-size: 23px;
+  font-family: Righteous, cursive;
+}
+
+.navBar .searchBar{
+  margin-top: 1px;
+  margin-left: 20px;
+}
+
+.navBar .searchBar input[type=text]{
+  float: center;
+  padding: 4px;
+  border-radius: 20px;
+  width: 560px;
+  margin-top: 12px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+.navBar .settings {
+  float: right;
+}
+
+.navBar .chat {
+  float: right;
+}
