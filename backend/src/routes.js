@@ -1,7 +1,10 @@
 const express = require('express');
+const multer = require('multer');
 
 const UsersControllers = require('./controllers/UsersControllers');
 const LoginControllers = require('./controllers/LoginControllers');
+
+const multerConfig = require('./config/multer');
 
 const registerValidation = require('./validators/register');
 const emailAlreadyExists = require('./utils/emailAlreadyExists');
@@ -9,6 +12,11 @@ const userAlreadyExists = require('./utils/userAlreadyExists');
 const hashPassword = require('./utils/hashPassword');
 
 const routes = express.Router();
+
+routes.post('/upload', multer(multerConfig).single('file'), (req, res) => {
+    
+    return res.json(req.file);
+});
 
 routes.post('/users', async (req, res) => {
     const {error} = registerValidation(req.body);
