@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
+import { FaReply } from 'react-icons/fa';
+import { AiFillLike } from 'react-icons/ai';
 import { IoMdChatbubbles, IoMdSettings } from 'react-icons/io';
 
 import exPost from '../../assets/dudumorto.jpg';
@@ -41,68 +43,35 @@ export default function Homepage(){
                 <img src={exPost} alt="postImg"/>
               </a>
             </div>
+            
+            <div className="detailBox">
+              <div className="titleBox">
+                <label>CommentBox</label>
+                <button type="button" className="close" aria-hidden="true">&times;</button>
+              </div>
 
-            {/* comments */}
-            <div className="comments-container">
-              <h1>Comments</h1>
-              
-              <ul id="comments-list" className="comments-list">
+              <div className="commentBox">
+                <p className="taskDescription">
+                  Cara morreu em pé kkkkkkkkkkk
+                </p>
+              </div>
 
-                <li>
-                  <div className="comment-main-level">
-                    
-                    {/* avatar */}
-                    <div className="comment-avatar">
-                      <a href="">
-                        <img src={dudu} alt=""/>
-                      </a>
-                    </div>
-
-                    {/*comment container */}
-                    <div className="comment-box">
-
-                      <div className="comment-head">
-                        <a href=""> <h6>Dudu</h6> </a>
-                        <span>há 14 min</span>
-                        <i className="reply"/>
-                        <i className="like"/>
-                      </div>
-
-                      <div className="comment-content">
-                        Poha lek, essa foi de fude neguin kkkkkk
-                      </div>  
-                    </div>
-                  </div>
-
-                {/* comment responses */}
-                <ul className="comments-list_reply-list">
+              <div className="actionBox">
+                <ul className="commentList">
                   <li>
-                    {/* avatar */}
-                    <div className="comment-avatar">
-                      <a href="">
-                        <img src={profileImg} alt=""/>
-                      </a>
-                    </div>
-                    
-                    {/*comment container */}
-                    <div className="comment-box">
-
-                      <div className="comment-head">
-                        <a href=""> <h6>FelpsDias</h6> </a>
-                        <span>há 10 min</span>
-                        <i className="like"/>
-                      </div>
-
-                      <div className="comment-content">
-                        Cara morreu em pé kkkk
-                      </div>  
+                    <div className="commenterImage">
+                      <img src={dudu} alt=""/>
                     </div>
 
+                    <div className="commentText">
+                      <p>foi de fuder ne nao?!</p>
+                      <span className="date-sub-text">on April 6th, 2020</span>
+                    </div>
                   </li>
                 </ul>
-                </li>
-              </ul>
+              </div>
             </div>
+
           </li>
 
 {/*=====================================================*/}
