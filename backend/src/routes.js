@@ -3,6 +3,8 @@ const multer = require('multer');
 
 const UsersControllers = require('./controllers/UsersControllers');
 const LoginControllers = require('./controllers/LoginControllers');
+const PostsControllers = require('./controllers/PostsControllers');
+const FilesControllers = require('./controllers/FilesControllers');
 
 const multerConfig = require('./config/multer');
 
@@ -10,13 +12,11 @@ const registerValidation = require('./validators/register');
 const emailAlreadyExists = require('./utils/emailAlreadyExists');
 const userAlreadyExists = require('./utils/userAlreadyExists');
 const hashPassword = require('./utils/hashPassword');
+const auth = require('./middlewares/auth');
 
 const routes = express.Router();
 
-routes.post('/upload', multer(multerConfig).single('file'), (req, res) => {
-    
-    return res.json(req.file);
-});
+routes.post('/upload', multer(multerConfig).single('file'), FilesControllers.create);
 
 routes.post('/users', async (req, res) => {
     const {error} = registerValidation(req.body);
@@ -44,5 +44,9 @@ routes.get('/users/:id', UsersControllers.indexInd);
 
 //deletar usuarios
 routes.delete('/users/:id', UsersControllers.delete);
+
+routes.use(auth);
+
+routes.post('/posts', PostsControllers.create);
 
 module.exports = routes;
