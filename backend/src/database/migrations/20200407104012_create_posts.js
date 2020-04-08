@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.text('body').notNullable();
         table.specificType('createdAt', 'DATETIME(6)');
         table.string('userId').notNullable();
-        table.string('fileId').notNullable();
+        table.string('fileId');
         
         table.foreign('userId').references('id').inTable('user');
         table.foreign('fileId').references('id').inTable('files');

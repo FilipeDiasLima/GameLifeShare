@@ -1,7 +1,10 @@
 exports.up = function(knex) {
     return knex.schema.createTable('files', function(table){
-        table.string('id').primary();
+        table.increments();
         table.string('name').notNullable();
+        table.text('key').notNullable();
+        table.integer('size').notNullable();
+        table.text('url').notNullable();
         table.integer('postId').notNullable();
         
         table.foreign('postId').references('id').inTable('posts');

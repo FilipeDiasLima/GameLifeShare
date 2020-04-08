@@ -3,8 +3,9 @@ exports.up = function(knex) {
         table.increments()
         table.text('body').notNullable();
         table.specificType('createdAt', 'DATETIME(6)');
-        table.integer('postId').Nullable();
-        table.string('userId').Nullable();
+        table.integer('postId').notNullable();
+        table.string('userId').notNullable();
+        table.string('fileId');
         
         table.foreign('postId').references('id').inTable('posts');
         table.foreign('userId').references('id').inTable('users');
