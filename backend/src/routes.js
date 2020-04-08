@@ -8,29 +8,17 @@ const FilesControllers = require('./controllers/FilesControllers');
 
 const multerConfig = require('./config/multer');
 
-const registerValidation = require('./validators/register');
-const emailAlreadyExists = require('./utils/emailAlreadyExists');
-const userAlreadyExists = require('./utils/userAlreadyExists');
 const hashPassword = require('./utils/hashPassword');
+
 const auth = require('./middlewares/auth');
+const checkDataRegister = require('./middlewares/checkDataRegister');
 
 const routes = express.Router();
 
 routes.post('/upload', multer(multerConfig).single('file'), FilesControllers.create);
 
-routes.post('/users', async (req, res) => {
-    const {error} = registerValidation(req.body);
-
-    if (error) return res.status(400).send(error.details[0].message);
-
-    const emailExist = await emailAlreadyExists(req.body);
-    if (emailExist) return res.status(400).send('Email already exists');
-
-    const userExist = await userAlreadyExists(req.body);
-    if (userExist) return res.status(400).send('User already exists');
-
+routes.post('/users', checkDataRegister, async (req, res) => {
     req.body.password = await hashPassword(req.body.password);
-
     UsersControllers.create(req, res);
 });
 
