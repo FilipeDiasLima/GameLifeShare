@@ -1,0 +1,56 @@
+.coverpadx{
+  top:60px;
+  left: 100px;
+  height: 360px;
+  width:850px;
+  position: absolute;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+ 
+.coverpadx img{
+  width: 850px;
+}
+.coverpad{
+  left: 100px;
+  top: 60px;
+  background: white;
+  height: 360px;
+  width: 850px;
+  position: absolute;
+  display: none;
+}
+
+.header001{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  top:0;
+  left: 0;
+  color: white;
+  z-index: 6;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+.avatarx img{
+  width: 140px;
+}
+
+.avatarx{
+  height: 140px;
+  padding: 5px;
+  top:255px;
+  left: 110px;
+  position: absolute;
+  border-radius: 2px/2px;
+  box-shadow:  0 3px 8px rgba(0,0,0,0.25);
+}
+
+.avatar{
+  height: 140px;
+  padding: 5px;
+  top:255px;
+  left: 110px;
+  position: absolute;
+  border-radius: 2px/2px;
+  background: white;
+}
