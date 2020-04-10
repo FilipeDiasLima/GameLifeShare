@@ -7,29 +7,22 @@ import './styles.css';
 
 import logoImg from '../../assets/logo300.png';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { signInRequest } from '../../store/modules/auth/actions';
+
 
 export default function Login(){
   const [username,setUsername] = useState('');
   const [password,setPassword] = useState('');
 
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
 
-  async function handleLogin(e){
+  function handleLogin(e){
+    console.log(loading);
+    console.log('aqui ta ok');
     e.preventDefault();
-
-    try{
-      const response = await api.post('login',{username, password});
-
-      localStorage.setItem('username',username);
-      localStorage.setItem('password',password);
-      localStorage.setItem('email',response.data.password);
-
-
-      history.push('/home');
-
-    }catch(err){
-      alert('Falha no login');
-    }
+    dispatch(signInRequest(username, password));
   }
   
   return(
@@ -57,7 +50,9 @@ export default function Login(){
             />
         </div>
 
-        <input type="submit" className="logbutton" value="Login"/>
+        <button type="submit" className="logbutton">
+          { loading ? 'Loading...' : 'Login' }
+        </button>
 
         <div className="bottom-text">
           Don't have an account? <Link to="/register">Sign up</Link>
