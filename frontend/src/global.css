@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,500,700&display=swap');
+
 
 * {
 	margin: 0px; 
@@ -9,28 +12,50 @@
 
 body {
   min-height: 100vh;
-  background-image: linear-gradient(100deg, #17718c, #545260, #4f4957);
+  background: linear-gradient(90deg, #146881 0%, rgba(96, 93, 118, 0.89) 55.33%, rgba(124, 115, 137, 0.93) 100%)#767676;
   -webkit-font-smoothing: antialiased;
 }
 
-/* navigation bar*/
-.navBar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-image: linear-gradient(100deg, #17718c, #545260, #4f4957);
-  position: -webkit-sticky;
-  position: sticky;
-  top:0;
+/* topBar */
+
+.topBar {
+  position: absolute;
+
+  width: 100%;
+  height: 61px;
+  left: 0px;
+  top: 0px;
+
 }
 
-.navBar li{
+  /* estilização da unordered list */
+
+.topBar ul {
+  list-style-type: none;
+  margin: 0;
+
+  position: -webkit-sticky;
+  position: sticky;
+
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  top: 0;
+
+  background: linear-gradient(90deg, #FFFFFF -0.36%, #265767 -0.36%, #3E6F84 -0.35%, #505460 49.82%, #726A7C 100%);
+
+}
+
+  /* estilização dos itens */
+
+.topBar li {
   float: left;
   height: 56px;
 }
 
-.navBar li a{
+  /* estilização dos links dos itens */
+
+.topBar li a{
   display: block;
   color: white;
   text-align: center;
@@ -39,33 +64,56 @@ body {
   transition: opacity 0.2s;
 }
 
-.navBar li a:hover {
+
+.topBar li a:hover {
   opacity: 0.4;
 }
 
-.navBar .profileImg a:hover {
+.topBar  a img:hover {
   opacity: 0.7;
 }
 
-.navBar .profileImg a img{
-  margin-top: -11px;
-  margin-left: 125px;
-  width: 50px;
-  height: 50px;
-  border-radius: 20%;
+/* estilização dos icones, img e textos da topBar */
+
+.topBar .menuIcon {
+  display: flex;
+  flex-direction: column;
+  position: absolute;  
+  
+  top: 0px;
+
+  float: left;
 }
 
-.navBar .logoName a{
+.topBar a img {
+  margin-top: 6px;
+  margin-left: 400px;
+  
+  float: left; 
+
+  width: 47px;
+  height: 47px;
+
+  border-radius: 10px;
+}
+
+.topBar .logoName a{
+  margin-top: 0px;
+  margin-left: 70px;
   font-size: 23px;
   font-family: Righteous, cursive;
+  font-size: 25px;
+  line-height: 31px;
+
+  color: #FFFFFF;
 }
 
-.navBar .searchBar{
+.topBar .searchBar {
   margin-top: 1px;
   margin-left: 20px;
 }
 
-.navBar .searchBar input[type=text]{
+.topBar .searchBar input[type=text]{
   float: center;
   padding: 4px;
   border-radius: 20px;
@@ -73,12 +121,22 @@ body {
   margin-top: 12px;
   margin-right: 16px;
   font-size: 17px;
+  outline: none;
 }
 
-.navBar .settings {
+.topBar .searchBar input::placeholder{
+  font-family: Roboto, sans-serif;
+}
+
+.topBar .searchIcon   {
+  padding: 1px 1px;
+  top: 0px;
+}
+
+.topBar .settingsIcon {
   float: right;
 }
 
-.navBar .chat {
+.topBar .chatIcon {
   float: right;
 }
