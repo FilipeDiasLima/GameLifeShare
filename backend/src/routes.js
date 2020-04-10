@@ -1,36 +1,26 @@
 const express = require('express');
 const multer = require('multer');
 
+const CommentsControllers = require('./controllers/CommentsControllers');
 const UsersControllers = require('./controllers/UsersControllers');
 const LoginControllers = require('./controllers/LoginControllers');
 const PostsControllers = require('./controllers/PostsControllers');
 const FilesControllers = require('./controllers/FilesControllers');
 
 const multerConfig = require('./config/multer');
-
-const registerValidation = require('./validators/register');
-const emailAlreadyExists = require('./utils/emailAlreadyExists');
-const userAlreadyExists = require('./utils/userAlreadyExists');
 const hashPassword = require('./utils/hashPassword');
 const auth = require('./middlewares/auth');
+
+const checkDataRegister = require('./middlewares/checkDataRegister');
+const commentEditAuth = require('./middlewares/commentEditAuth');
+const postEditAuth = require('./middlewares/postEditAuth');
 
 const routes = express.Router();
 
 routes.post('/upload', multer(multerConfig).single('file'), FilesControllers.create);
 
-routes.post('/users', async (req, res) => {
-    const {error} = registerValidation(req.body);
-
-    if (error) return res.status(400).send(error.details[0].message);
-
-    const emailExist = await emailAlreadyExists(req.body);
-    if (emailExist) return res.status(400).send('Email already exists');
-
-    const userExist = await userAlreadyExists(req.body);
-    if (userExist) return res.status(400).send('User already exists');
-
+routes.post('/users', checkDataRegister, async (req, res) => {
     req.body.password = await hashPassword(req.body.password);
-
     UsersControllers.create(req, res);
 });
 
@@ -45,8 +35,18 @@ routes.get('/users/:id', UsersControllers.indexInd);
 //deletar usuarios
 routes.delete('/users/:id', UsersControllers.delete);
 
-routes.use(auth);
+routes.get('/posts', PostsControllers.index);
+
+routes.get('/comments/:id', CommentsControllers.indexId);
+
+routes.use(auth); //apenas usuarios logados podem acessar as rotas abaixo
 
 routes.post('/posts', PostsControllers.create);
+
+routes.delete('/posts/:id', postEditAuth, PostsControllers.delete);
+
+routes.post('/comments', CommentsControllers.create);
+
+routes.delete('/comments/:id', commentEditAuth, CommentsControllers.delete);
 
 module.exports = routes;
