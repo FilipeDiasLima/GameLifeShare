@@ -19,7 +19,7 @@
   background: linear-gradient(90.52deg, #345665 0.2%, #505460 47.37%, #726A7C 99.72%);
   box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.28);
   border-radius: 10px;
-  border: 2px solid #6E6E6E;
+  border: 1px solid #6E6E6E;
   box-sizing: border-box;
 
 }
@@ -211,13 +211,17 @@ div.boxInputComment {
   border-radius: 0px 0px 5px 5px;
 }
 
-div.boxInputComment input{
+.boxInputComment .inputComment {
   position: absolute;
+  
   width: 263px;
   height: 30px;
   left: 23px;
   top: 9px;
 
+  background: #FFFFFF;
+
+  border-radius: 20px;
   background: #FFFFFF;
   border-radius: 20px;
   border: none;
@@ -226,10 +230,31 @@ div.boxInputComment input{
   outline: none;
 }
 
-div.boxInputComment input::placeholder{
+div.boxInputComment .inputComment input{
+  position: absolute;
+
+  width: 90%;
+  height: 23px;
+  left: 10px;
+  top: 4px;
+
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+
+  border: none;
+
   color: #333;
-  opacity: 0.6;
+
 }
+
+div.boxInputComment .inputComment input::placeholder{
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
 
 div.boxInputComment button{
   position: absolute;

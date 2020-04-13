@@ -30,7 +30,7 @@ export default function Homepage(){
           <a href="/profile"><img src={avatar} alt=""/></a>
           <li className="logoName"><a href="/home">GamingShare</a></li>
           <li className="searchBar"><input type="text" placeholder="Search..."/></li>
-          <li className="searchIcon"><a href=""><IoIosSearch size={28} color="#FFFFFF"/></a></li>
+          <li className="searchIcon"><button type="submit"><IoIosSearch size={28} color="#333"/></button></li>
           <li className="settingsIcon"><a href=""><IoMdSettings size={28} color="#FFFFFF"/></a></li>
           <li className="chatIcon"><a href=""><IoMdChatbubbles size={28} color="#FFFFFF"/></a></li>
         </ul>
@@ -84,7 +84,9 @@ export default function Homepage(){
           
 
           <div className="boxInputComment">
-            <input type="text" placeholder="   Write a comment..." className="inputComment"/>
+            <div className="inputComment">
+              <input type="text" placeholder="Write a comment..." className="inputComment"/>
+            </div>
             <button type="submit"><a href=""><IoMdSend size={23} color="#FFF"/></a></button>
           </div>
 

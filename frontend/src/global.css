@@ -20,123 +20,139 @@ body {
 
 .topBar {
   position: absolute;
-
   width: 100%;
   height: 61px;
   left: 0px;
   top: 0px;
 
-}
+  position: fixed;
 
-  /* estilização da unordered list */
+  background: linear-gradient(90deg, #FFFFFF -0.36%, #265767 -0.36%, #3E6F84 -0.35%, #505460 49.82%, #726A7C 100%);
+
+}
 
 .topBar ul {
   list-style-type: none;
   margin: 0;
 
   position: -webkit-sticky;
-  position: sticky;
-
-  margin: auto;
-  padding: 0;
-  overflow: hidden;
-  top: 0;
-
-  background: linear-gradient(90deg, #FFFFFF -0.36%, #265767 -0.36%, #3E6F84 -0.35%, #505460 49.82%, #726A7C 100%);
 
 }
 
-  /* estilização dos itens */
-
-.topBar li {
-  float: left;
-  height: 56px;
-}
-
-  /* estilização dos links dos itens */
-
-.topBar li a{
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-
-.topBar li a:hover {
-  opacity: 0.4;
-}
-
-.topBar  a img:hover {
-  opacity: 0.7;
-}
-
-/* estilização dos icones, img e textos da topBar */
 
 .topBar .menuIcon {
-  display: flex;
-  flex-direction: column;
-  position: absolute;  
-  
-  top: 0px;
-
-  float: left;
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  left: 13px;
+  top: 15px;
 }
 
 .topBar a img {
-  margin-top: 6px;
-  margin-left: 400px;
-  
-  float: left; 
-
+  position: fixed;
   width: 47px;
   height: 47px;
+  left: 281px;
+  top: 7px;
+
+  float: left;
 
   border-radius: 10px;
 }
 
-.topBar .logoName a{
-  margin-top: 0px;
-  margin-left: 70px;
-  font-size: 23px;
-  font-family: Righteous, cursive;
+.topBar .logoName {
+  position: absolute;
+  left: 376px;
+  top: 16px;
+
+}
+
+.topBar .logoName a {
+  color: #FFFFFF;
+  font-family: Righteous;
+  font-style: normal;
+  font-weight: normal;
   font-size: 25px;
   line-height: 31px;
 
-  color: #FFFFFF;
 }
 
 .topBar .searchBar {
-  margin-top: 1px;
-  margin-left: 20px;
-}
+  position: absolute;
+  
+  width: 537px;
+  height: 33px;
+  left: 566px;
+  top: 16px;
 
-.topBar .searchBar input[type=text]{
-  float: center;
-  padding: 4px;
+  background: #FFFFFF;
+
   border-radius: 20px;
-  width: 560px;
-  margin-top: 12px;
-  margin-right: 16px;
-  font-size: 17px;
-  outline: none;
 }
 
-.topBar .searchBar input::placeholder{
-  font-family: Roboto, sans-serif;
+.topBar .searchBar input{
+  position: absolute;
+
+  width: 87%;
+  height: 23px;
+  left: 12px;
+  top: 5px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  border: none;
+
+  color: #333;
 }
 
-.topBar .searchIcon   {
-  padding: 1px 1px;
-  top: 0px;
+.topBar .searchBar input::placeholder {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.6);
+  
 }
 
-.topBar .settingsIcon {
-  float: right;
+.topBar .searchIcon {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 1057px;
+  top: 19px;
+}
+
+.topBar .searchIcon button {
+  border-radius: 5px;
+  border: none;
+  width: 37px;
+  height: 27px;
+  background:none;
+  cursor: pointer;
 }
 
 .topBar .chatIcon {
   float: right;
+  position: fixed;
+  width: 32px;
+  height: 24px;
+
+  top: 17px;
+  left: 93%;
+
+}
+
+.topBar .settingsIcon {
+  float: right;
+  position: fixed;
+  width: 32px;
+  height: 27px;
+  height: 24px;
+  top:17px;
+  left: 97%;
 }
