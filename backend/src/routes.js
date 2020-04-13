@@ -14,6 +14,7 @@ const auth = require('./middlewares/auth');
 const checkDataRegister = require('./middlewares/checkDataRegister');
 const commentEditAuth = require('./middlewares/commentEditAuth');
 const postEditAuth = require('./middlewares/postEditAuth');
+const loginMiddleware = require('./middlewares/loginMiddleware');
 
 const routes = express.Router();
 
@@ -24,7 +25,7 @@ routes.post('/users', checkDataRegister, async (req, res) => {
     UsersControllers.create(req, res);
 });
 
-routes.post('/login', LoginControllers.create);
+routes.post('/login', loginMiddleware, LoginControllers.create);
 
 //listar todos os usuarios
 routes.get('/users', UsersControllers.index);
